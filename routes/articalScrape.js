@@ -1,7 +1,14 @@
 
 var express = require("express");
 var router = express.Router();
+// Our scraping tools
+// Axios is a promised-based http library, similar to jQuery's Ajax method
+// It works on the client and on the server
+var axios = require("axios");
+var cheerio = require("cheerio");
 
+// Require all models
+var db = require("../models");
 // A GET route for scraping the echoJS website
 router.get("/scrape", function(req, res) {
     // First, we grab the body of the html with axios
@@ -10,7 +17,9 @@ router.get("/scrape", function(req, res) {
       var $ = cheerio.load(response.data);
   
       // Now, we grab every h2 within an article tag, and do the following:
-      $("article h2").each(function(i, element) {
+
+      // use class css-z49qw6
+      $("css-z49qw6").each(function(i, element) {
         // Save an empty result object
         var result = {};
   
