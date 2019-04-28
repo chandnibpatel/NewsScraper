@@ -144,11 +144,8 @@ app.get("/articles", function(req, res) {
 
 // Grab an article by it's ObjectId
 app.get("/articles/:id", function(req, res) {
-  // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
   Article.findOne({ "_id": req.params.id })
-  // ..and populate all of the notes associated with it
   .populate("note")
-  // now, execute our query
   .exec(function(error, doc) {
     // Log any errors
     if (error) {
@@ -232,7 +229,7 @@ app.post("/notes/save/:id", function(req, res) {
 });
 
 // Delete a note
-app.delete("/notes/delete/:note_id/:article_id", function(req, res) {
+app.delete("/notes/delete/:note_id/:article_id?", function(req, res) {
   // Use the note id to find and delete it
   Note.findOneAndRemove({ "_id": req.params.note_id }, function(err) {
     // Log any errors
