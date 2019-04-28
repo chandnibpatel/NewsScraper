@@ -15,3 +15,16 @@ body {
 #scrape {
     margin: 8px 0px;
 }
+.jumbotron,.panel-heading{
+    background-color: black;
+    color: white;
+} 
+.panel-body{
+    background-color: peachpuff;
+    font-weight: bold;
+
+} 
+.navbar{
+    background-color: black;
+    color: white;
+}
